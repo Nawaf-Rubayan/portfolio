@@ -25,7 +25,6 @@ It includes my CV, projects, skills, and contact information.
 ## 🌐 Deployment
 
 This site is deployed via **GitHub Pages**.  
-Just push the files to a public repository and enable Pages in Settings.
 
 ---
 
@@ -37,4 +36,4 @@ Just push the files to a public repository and enable Pages in Settings.
 
 ---
 
-Built with ❤️ by Nawaf Rubayan.
+Built by Nawaf Rubayan.
