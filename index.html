@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nawaf Rubayan Alhejaili · Junior Software Engineer</title>
+  <meta name="description" content="Nawaf Rubayan Alhejaili — Junior Software Engineer & Computer Science Graduate. Portfolio showcasing projects, skills, and experience." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+    body.dark { background: #0f172a; color: #e2e8f0; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section-padding { padding: 80px 0; }
+    .section-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 8px; }
+    .section-subtitle { font-size: 1.125rem; color: #64748b; margin-bottom: 48px; font-weight: 400; }
+    body.dark .section-subtitle { color: #94a3b8; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2563eb;
+      margin-bottom: 12px;
+      background: #eff6ff;
+      padding: 4px 14px;
+      border-radius: 100px;
+    }
+    body.dark .section-label { background: #1e293b; color: #60a5fa; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .btn-primary { background: #0f172a; color: #fff; }
+    body.dark .btn-primary { background: #e2e8f0; color: #0f172a; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,23,42,0.15); }
+    body.dark .btn-primary:hover { box-shadow: 0 8px 24px rgba(226,232,240,0.12); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #0f172a;
+      color: #0f172a;
+    }
+    body.dark .btn-outline { border-color: #e2e8f0; color: #e2e8f0; }
+    .btn-outline:hover { background: #0f172a; color: #fff; transform: translateY(-2px); }
+    body.dark .btn-outline:hover { background: #e2e8f0; color: #0f172a; }
+    .btn-ghost {
+      background: transparent;
+      color: #0f172a;
+      border: 1.5px solid transparent;
+    }
+    body.dark .btn-ghost { color: #e2e8f0; }
+    .btn-ghost:hover { background: #f1f5f9; border-color: #e2e8f0; }
+    body.dark .btn-ghost:hover { background: #1e293b; border-color: #334155; }
+    .btn-sm { padding: 6px 16px; font-size: 0.8rem; }
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #e2e8f0;
+      color: #0f172a;
+      transition: all 0.2s;
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    body.dark .btn-icon { border-color: #334155; color: #e2e8f0; }
+    .btn-icon:hover { background: #0f172a; color: #fff; border-color: #0f172a; transform: translateY(-2px); }
+    body.dark .btn-icon:hover { background: #e2e8f0; color: #0f172a; border-color: #e2e8f0; }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(248,250,252,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226,232,240,0.5);
+      transition: background 0.3s, border-color 0.3s;
+      padding: 12px 0;
+    }
+    body.dark .navbar { background: rgba(15,23,42,0.88); border-bottom-color: rgba(51,65,85,0.5); }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; text-decoration: none; color: #0f172a; }
+    body.dark .navbar-brand { color: #e2e8f0; }
+    .navbar-brand span { color: #2563eb; }
+    .navbar-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .navbar-links a {
+      text-decoration: none;
+      color: #475569;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    body.dark .navbar-links a { color: #cbd5e1; }
+    .navbar-links a:hover { background: #f1f5f9; color: #0f172a; }
+    body.dark .navbar-links a:hover { background: #1e293b; color: #e2e8f0; }
+    .navbar-actions { display: flex; align-items: center; gap: 8px; }
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+      color: #0f172a;
+    }
+    body.dark .theme-toggle { color: #e2e8f0; }
+    .theme-toggle:hover { background: #f1f5f9; }
+    body.dark .theme-toggle:hover { background: #1e293b; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #0f172a; border-radius: 2px; transition: all 0.3s; }
+    body.dark .hamburger span { background: #e2e8f0; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 0 8px;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 12px;
+    }
+    body.dark .mobile-menu { border-top-color: #334155; }
+    .mobile-menu a {
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    body.dark .mobile-menu a { color: #cbd5e1; }
+    .mobile-menu a:hover { background: #f1f5f9; }
+    body.dark .mobile-menu a:hover { background: #1e293b; }
+    .mobile-menu.open { display: flex; }
+
+    /* ── Hero ── */
+    .hero { padding: 140px 0 80px; min-height: 100vh; display: flex; align-items: center; }
+    .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-text h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 12px; }
+    .hero-text h1 span { color: #2563eb; }
+    .hero-text .title-badge {
+      display: inline-block;
+      background: #eff6ff;
+      padding: 4px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+    body.dark .hero-text .title-badge { background: #1e293b; color: #60a5fa; }
+    .hero-text p { font-size: 1.15rem; color: #475569; max-width: 520px; margin-bottom: 32px; line-height: 1.7; }
+    body.dark .hero-text p { color: #94a3b8; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
+    .hero-social { display: flex; gap: 12px; }
+
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .hero-avatar {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb15, #0f172a08);
+      border: 3px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      font-weight: 700;
+      color: #2563eb;
+      user-select: none;
+      transition: border-color 0.3s, background 0.3s;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.06);
+    }
+    body.dark .hero-avatar { border-color: #334155; background: linear-gradient(135deg, #2563eb20, #0f172a40); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .hero-avatar-inner { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-avatar-inner .initials { font-size: 4.5rem; line-height: 1; }
+    .hero-avatar-inner .label { font-size: 0.7rem; font-weight: 500; color: #64748b; letter-spacing: 0.04em; }
+    body.dark .hero-avatar-inner .label { color: #94a3b8; }
+
+    /* ── About ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .about-text p { color: #475569; margin-bottom: 16px; font-size: 1.05rem; line-height: 1.8; }
+    body.dark .about-text p { color: #94a3b8; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .stat-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+    body.dark .stat-card { background: #1e293b; border-color: #334155; }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    body.dark .stat-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .stat-card .number { font-size: 1.8rem; font-weight: 700; color: #2563eb; display: block; }
+    .stat-card .label { font-size: 0.85rem; color: #64748b; font-weight: 500; }
+    body.dark .stat-card .label { color: #94a3b8; }
+
+    /* ── Experience ── */
+    .timeline { position: relative; padding-left: 32px; border-left: 2px solid #e2e8f0; }
+    body.dark .timeline { border-left-color: #334155; }
+    .timeline-item { margin-bottom: 40px; position: relative; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2563eb;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px #2563eb;
+    }
+    body.dark .timeline-item::before { border-color: #0f172a; }
+    .timeline-item .date { font-size: 0.8rem; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.04em; }
+    .timeline-item h3 { font-size: 1.2rem; font-weight: 700; margin: 4px 0 2px; }
+    .timeline-item .company { font-size: 0.95rem; color: #64748b; font-weight: 500; margin-bottom: 8px; }
+    body.dark .timeline-item .company { color: #94a3b8; }
+    .timeline-item ul { list-style: none; padding: 0; margin: 0; }
+    .timeline-item ul li {
+      position: relative;
+      padding-left: 20px;
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+    body.dark .timeline-item ul li { color: #94a3b8; }
+    .timeline-item ul li::before { content: '—'; position: absolute; left: 0; color: #2563eb; font-weight: 600; }
+
+    /* ── Projects ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 28px; }
+    .project-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 28px 32px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark .project-card { background: #1e293b; border-color: #334155; }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.05); border-color: #2563eb40; }
+    body.dark .project-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.25); border-color: #2563eb40; }
+    .project-card .project-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      color: #2563eb;
+    }
+    body.dark .project-card .project-icon { background: #1e293b; color: #60a5fa; }
+    .project-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .project-card p { color: #475569; font-size: 0.95rem; line-height: 1.7; flex: 1; margin-bottom: 16px; }
+    body.dark .project-card p { color: #94a3b8; }
+    .project-card .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .project-card .tech-tags span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: #f1f5f9;
+      padding: 3px 12px;
+      border-radius: 100px;
+      color: #475569;
+      letter-spacing: 0.02em;
+    }
+    body.dark .project-card .tech-tags span { background: #2d3748; color: #cbd5e1; }
+    .project-card .project-links { display: flex; gap: 8px; margin-top: auto; }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 24px; }
+    .skill-category {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px 28px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+    body.dark .skill-category { background: #1e293b; border-color: #334155; }
+    .skill-category:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    body.dark .skill-category:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .skill-category h4 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #2563eb; margin-bottom: 12px; }
+    .skill-category ul { list-style: none; padding: 0; margin: 0; }
+    .skill-category ul li { font-size: 0.95rem; padding: 4px 0; color: #0f172a; font-weight: 450; display: flex; align-items: center; gap: 8px; }
+    body.dark .skill-category ul li { color: #e2e8f0; }
+    .skill-category ul li::before { content: '›'; color: #2563eb; font-weight: 700; font-size: 1.1rem; }
+
+    /* ── Education ── */
+    .education-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 36px;
+      border: 1px solid #e2e8f0;
+      max-width: 600px;
+      transition: all 0.2s;
+    }
+    body.dark .education-card { background: #1e293b; border-color: #334155; }
+    .education-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    body.dark .education-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .education-card .edu-icon { font-size: 2rem; margin-bottom: 8px; }
+    .education-card h3 { font-size: 1.3rem; font-weight: 700; }
+    .education-card .edu-meta { color: #64748b; font-size: 0.95rem; margin: 4px 0 8px; }
+    body.dark .education-card .edu-meta { color: #94a3b8; }
+    .education-card .edu-detail { color: #475569; font-size: 0.95rem; }
+    body.dark .education-card .edu-detail { color: #94a3b8; }
+
+    /* ── Contact ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .contact-info p { color: #475569; margin-bottom: 24px; font-size: 1rem; line-height: 1.7; }
+    body.dark .contact-info p { color: #94a3b8; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+      text-decoration: none;
+      color: #0f172a;
+      transition: color 0.2s;
+    }
+    body.dark .contact-item { border-bottom-color: #1e293b; color: #e2e8f0; }
+    .contact-item:hover { color: #2563eb; }
+    .contact-item .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #2563eb;
+      flex-shrink: 0;
+    }
+    body.dark .contact-item .icon { background: #1e293b; color: #60a5fa; }
+    .contact-item .info { display: flex; flex-direction: column; }
+    .contact-item .info .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: #64748b; font-weight: 600; }
+    body.dark .contact-item .info .label { color: #94a3b8; }
+    .contact-item .info .value { font-weight: 500; }
+    .contact-social { display: flex; gap: 12px; margin-top: 20px; }
+
+    /* ── Footer ── */
+    .footer { border-top: 1px solid #e2e8f0; padding: 32px 0; margin-top: 20px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
+    body.dark .footer { border-top-color: #1e293b; }
+
+    /* ── Responsive ── */
+    @media (max-width: 992px) {
+      .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-social { justify-content: center; }
+      .hero-avatar { width: 200px; height: 200px; font-size: 3.5rem; }
+      .hero-avatar-inner .initials { font-size: 3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .section-padding { padding: 56px 0; }
+      .hero { padding: 120px 0 56px; min-height: auto; }
+      .hero-text h1 { font-size: 2.4rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .navbar-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu.open { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .hero-text h1 { font-size: 1.9rem; }
+      .hero-text p { font-size: 1rem; }
+      .hero-avatar { width: 150px; height: 150px; font-size: 2.5rem; }
+      .hero-avatar-inner .initials { font-size: 2.2rem; }
+      .section-title { font-size: 1.6rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .education-card { padding: 24px 20px; }
+      .project-card { padding: 20px 20px 24px; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .stat-card { padding: 16px; }
+      .stat-card .number { font-size: 1.4rem; }
+      .hero-buttons .btn { padding: 8px 18px; font-size: 0.8rem; }
+      .timeline { padding-left: 20px; }
+      .timeline-item::before { left: -26px; width: 10px; height: 10px; }
+      .section-padding { padding: 44px 0; }
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-up { animation: fadeUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.4s; opacity: 0; }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- React + Babel standalone -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect, useCallback } = React;
+
+    // ─── DATA ────────────────────────────────────────────────────────────────
+    const DATA = {
+      name: 'Nawaf Rubayan Alhejaili',
+      title: 'Junior Software Engineer | Computer Science Graduate',
+      location: 'Medina, Saudi Arabia',
+      phone: '+966 53 717 9270',
+      email: 'nawaf.rubayan@gmail.com',
+      linkedin: 'https://linkedin.com/in/nawaf-rubayan-69a636296',
+      github: 'https://github.com/Nawaf-Rubayan', 
+      summary: `Recent Computer Science graduate with a strong foundation in software development, databases, and problem-solving. Experienced in Java, C, HTML, and MySQL, with three years of customer-facing experience as a Receptionist, developing excellent communication, organization, and multitasking skills. Passionate about building software solutions, learning new technologies, and contributing to collaborative development teams. Seeking an entry-level Software Engineer or Junior Software Developer position where I can apply my technical knowledge and continue growing as a developer.`,
+      experience: [{
+        title: 'Receptionist',
+        company: 'Customer Service · Various',
+        period: '3 years',
+        details: [
+          'Delivered excellent customer service in a fast-paced environment',
+          'Developed strong communication and interpersonal skills',
+          'Managed multiple tasks simultaneously with strong organizational ability',
+          'Built adaptability and problem-solving skills through daily customer interactions'
+        ]
+      }],
+      projects: [{
+        name: 'AI-Powered PDF RAG Assistant',
+        description: `Built a web-based RAG tool that allows users to upload PDFs and ask questions about their content. Implemented PDF text extraction, chunking, and semantic search for context-aware AI responses. Integrated multiple LLM APIs (OpenAI, Claude, Gemini, Ollama) with model switching support. Added persistent storage using IndexedDB for saving documents and chat history.`,
+        technologies: ['HTML', 'JavaScript', 'OpenAI API', 'Claude API', 'Gemini API', 'PDF.js', 'IndexedDB'],
+        github: null,
+        demo: null
+      }],
+      skills: {
+        'Programming Languages': ['Java', 'C', 'HTML'],
+        'Databases': ['MySQL'],
+        'Core CS': ['Object-Oriented Programming (OOP)', 'Data Structures', 'Problem Solving', 'Software Development Fundamentals'],
+        'Soft Skills': ['Communication', 'Customer Service', 'Teamwork', 'Time Management', 'Organization', 'Adaptability']
+      },
+      education: {
+        degree: 'Bachelor of Computer Science',
+        university: 'Taibah University',
+        location: 'Medina',
+        year: '2026'
+      }
+    };
+
+    // ─── CONTEXT ─────────────────────────────────────────────────────────────
+    const ThemeContext = React.createContext();
+
+    function ThemeProvider({ children }) {
+      const [theme, setTheme] = useState(() => {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      });
+
+      useEffect(() => {
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        localStorage.setItem('theme', theme);
+      }, [theme]);
+
+      const toggle = useCallback(() => {
+        setTheme((t) => (t === 'light' ? 'dark' : 'light'));
+      }, []);
+
+      return React.createElement(ThemeContext.Provider, { value: { theme, toggle } }, children);
+    }
+
+    function useTheme() {
+      return React.useContext(ThemeContext);
+    }
+
+    // ─── COMPONENTS ──────────────────────────────────────────────────────────
+
+    function Navbar() {
+      const { theme, toggle } = useTheme();
+      const [mobileOpen, setMobileOpen] = useState(false);
+
+      const links = [
+        { label: 'Home', href: '#hero' },
+        { label: 'About', href: '#about' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Projects', href: '#projects' },
+        { label: 'Skills', href: '#skills' },
+        { label: 'Education', href: '#education' },
+        { label: 'Contact', href: '#contact' },
+      ];
+
+      return React.createElement('nav', { className: 'navbar' },
+        React.createElement('div', { className: 'container navbar-inner' },
+          React.createElement('a', { href: '#hero', className: 'navbar-brand' }, 'Nawaf ', React.createElement('span', null, '.dev')),
+          React.createElement('ul', { className: 'navbar-links' },
+            links.map((l) => React.createElement('li', { key: l.href }, React.createElement('a', { href: l.href }, l.label)))
+          ),
+          React.createElement('div', { className: 'navbar-actions' },
+            React.createElement('button', { className: 'theme-toggle', onClick: toggle, 'aria-label': 'Toggle theme' },
+              theme === 'light' ? '🌙' : '☀️'
+            ),
+            React.createElement('button', { className: 'hamburger', onClick: () => setMobileOpen((v) => !v), 'aria-label': 'Toggle menu' },
+              React.createElement('span', null),
+              React.createElement('span', null),
+              React.createElement('span', null)
+            ),
+            React.createElement('div', { className: `mobile-menu ${mobileOpen ? 'open' : ''}` },
+              links.map((l) => React.createElement('a', { key: l.href, href: l.href, onClick: () => setMobileOpen(false) }, l.label))
+            )
+          )
+        )
+      );
+    }
+
+    function Hero() {
+      const { name, summary, linkedin, github, email } = DATA;
+      const initials = name.split(' ').map(n => n[0]).join('');
+
+      return React.createElement('section', { id: 'hero', className: 'hero' },
+        React.createElement('div', { className: 'container hero-content' },
+          React.createElement('div', { className: 'hero-text' },
+            React.createElement('div', { className: 'title-badge animate-fade-up' }, 'Computer Science Graduate'),
+            React.createElement('h1', { className: 'animate-fade-up delay-1' },
+              'Hi, I\'m ', React.createElement('span', null, name.split(' ')[0]), React.createElement('br', null),
+              name.split(' ').slice(1).join(' ')
+            ),
+            React.createElement('p', { className: 'animate-fade-up delay-2' },
+              summary.split('.')[0] + '. Seeking entry-level Software Engineer or Junior Developer roles.'
+            ),
+            React.createElement('div', { className: 'hero-buttons animate-fade-up delay-3' },
+              React.createElement('a', { href: 'cv.pdf', target: '_blank', className: 'btn btn-primary' }, '📄 View CV'),
+              React.createElement('a', { href: 'cv.pdf', download: true, className: 'btn btn-outline' }, '⬇ Download CV'),
+              React.createElement('a', { href: '#contact', className: 'btn btn-ghost' }, 'Contact Me')
+            ),
+            React.createElement('div', { className: 'hero-social animate-fade-up delay-4' },
+              React.createElement('a', { href: linkedin, target: '_blank', rel: 'noopener noreferrer', className: 'btn-icon', 'aria-label': 'LinkedIn' },
+                React.createElement('svg', { width: '20', height: '20', viewBox: '0 0 24 24', fill: 'currentColor' },
+                  React.createElement('path', { d: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' })
+                )
+              ),
+              React.createElement('a', { href: github, target: '_blank', rel: 'noopener noreferrer', className: 'btn-icon', 'aria-label': 'GitHub' },
+                React.createElement('svg', { width: '20', height: '20', viewBox: '0 0 24 24', fill: 'currentColor' },
+                  React.createElement('path', { d: 'M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z' })
+                )
+              ),
+              React.createElement('a', { href: `mailto:${email}`, className: 'btn-icon', 'aria-label': 'Email' },
+                React.createElement('svg', { width: '20', height: '20', viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: '2', strokeLinecap: 'round', strokeLinejoin: 'round' },
+                  React.createElement('path', { d: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' }),
+                  React.createElement('polyline', { points: '22,6 12,13 2,6' })
+                )
+              )
+            )
+          ),
+          React.createElement('div', { className: 'hero-visual animate-fade-up delay-2' },
+            React.createElement('div', { className: 'hero-avatar' },
+              React.createElement('div', { className: 'hero-avatar-inner' },
+                React.createElement('span', { className: 'initials' }, initials),
+                React.createElement('span', { className: 'label' }, 'CS Grad')
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function About() {
+      const { summary, experience } = DATA;
+      const expYears = experience[0]?.period || '3';
+
+      return React.createElement('section', { id: 'about', className: 'section-padding', style: { background: 'var(--about-bg, #f8fafc)' } },
+        React.createElement('div', { className: 'container' },
+          React.createElement('span', { className: 'section-label' }, 'About'),
+          React.createElement('h2', { className: 'section-title' }, 'Who I Am'),
+          React.createElement('p', { className: 'section-subtitle' }, 'A brief introduction based on my background and aspirations.'),
+          React.createElement('div', { className: 'about-grid' },
+            React.createElement('div', { className: 'about-text' },
+              summary.split('.').filter(s => s.trim()).map((s, i) => React.createElement('p', { key: i }, s.trim() + '.'))
+            ),
+            React.createElement('div', { className: 'about-stats' },
+              React.createElement('div', { className: 'stat-card' },
+                React.createElement('span', { className: 'number' }, expYears + '+'),
+                React.createElement('span', { className: 'label' }, 'Years Customer Service')
+              ),
+              React.createElement('div', { className: 'stat-card' },
+                React.createElement('span', { className: 'number' }, '4'),
+                React.createElement('span', { className: 'label' }, 'Programming Languages')
+              ),
+              React.createElement('div', { className: 'stat-card' },
+                React.createElement('span', { className: 'number' }, '1'),
+                React.createElement('span', { className: 'label' }, 'Major Project Built')
+              ),
+              React.createElement('div', { className: 'stat-card' },
+                React.createElement('span', { className: 'number' }, '🎓'),
+                React.createElement('span', { className: 'label' }, 'B.Sc. Computer Science')
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function Experience() {
+      const { experience } = DATA;
+      return React.createElement('section', { id: 'experience', className: 'section-padding' },
+        React.createElement('div', { className: 'container' },
+          React.createElement('span', { className: 'section-label' }, 'Experience'),
+          React.createElement('h2', { className: 'section-title' }, 'Work History'),
+          React.createElement('p', { className: 'section-subtitle' }, 'Professional experience that shaped my soft skills and work ethic.'),
+          React.createElement('div', { className: 'timeline' },
+            experience.map((exp, idx) =>
+              React.createElement('div', { key: idx, className: 'timeline-item' },
+                React.createElement('div', { className: 'date' }, exp.period),
+                React.createElement('h3', null, exp.title),
+                React.createElement('div', { className: 'company' }, exp.company),
+                React.createElement('ul', null,
+                  exp.details.map((d, i) => React.createElement('li', { key: i }, d))
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function Projects() {
+      const { projects } = DATA;
+      return React.createElement('section', { id: 'projects', className: 'section-padding', style: { background: 'var(--projects-bg, #f8fafc)' } },
+        React.createElement('div', { className: 'container' },
+          React.createElement('span', { className: 'section-label' }, 'Projects'),
+          React.createElement('h2', { className: 'section-title' }, 'Featured Work'),
+          React.createElement('p', { className: 'section-subtitle' }, 'A hands-on project demonstrating my technical capabilities.'),
+          React.createElement('div', { className: 'projects-grid' },
+            projects.map((proj, idx) =>
+              React.createElement('div', { key: idx, className: 'project-card' },
+                React.createElement('div', { className: 'project-icon' }, '🤖'),
+                React.createElement('h3', null, proj.name),
+                React.createElement('p', null, proj.description),
+                React.createElement('div', { className: 'tech-tags' },
+                  proj.technologies.map((t, i) => React.createElement('span', { key: i }, t))
+                ),
+                React.createElement('div', { className: 'project-links' },
+                  proj.github && React.createElement('a', { href: proj.github, target: '_blank', rel: 'noopener noreferrer', className: 'btn btn-outline btn-sm' }, 'GitHub'),
+                  proj.demo && React.createElement('a', { href: proj.demo, target: '_blank', rel: 'noopener noreferrer', className: 'btn btn-primary btn-sm' }, 'Live Demo')
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function Skills() {
+      const { skills } = DATA;
+      const entries = Object.entries(skills);
+      return React.createElement('section', { id: 'skills', className: 'section-padding' },
+        React.createElement('div', { className: 'container' },
+          React.createElement('span', { className: 'section-label' }, 'Skills'),
+          React.createElement('h2', { className: 'section-title' }, 'Technical & Professional'),
+          React.createElement('p', { className: 'section-subtitle' }, 'Core competencies developed through education and experience.'),
+          React.createElement('div', { className: 'skills-grid' },
+            entries.map(([category, items]) =>
+              React.createElement('div', { key: category, className: 'skill-category' },
+                React.createElement('h4', null, category),
+                React.createElement('ul', null,
+                  items.map((item, i) => React.createElement('li', { key: i }, item))
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function Education() {
+      const { education } = DATA;
+      return React.createElement('section', { id: 'education', className: 'section-padding', style: { background: 'var(--education-bg, #f8fafc)' } },
+        React.createElement('div', { className: 'container' },
+          React.createElement('span', { className: 'section-label' }, 'Education'),
+          React.createElement('h2', { className: 'section-title' }, 'Academic Background'),
+          React.createElement('p', { className: 'section-subtitle' }, 'Formal education that built my technical foundation.'),
+          React.createElement('div', { className: 'education-card' },
+            React.createElement('div', { className: 'edu-icon' }, '🎓'),
+            React.createElement('h3', null, education.degree),
+            React.createElement('div', { className: 'edu-meta' }, `${education.university}, ${education.location}`),
+            React.createElement('div', { className: 'edu-detail' }, `Graduated ${education.year}`)
+          )
+        )
+      );
+    }
+
+    function Contact() {
+      const { email, linkedin, github, phone, location } = DATA;
+      return React.createElement('section', { id: 'contact', className: 'section-padding' },
+        React.createElement('div', { className: 'container' },
+          React.createElement('span', { className: 'section-label' }, 'Contact'),
+          React.createElement('h2', { className: 'section-title' }, 'Get in Touch'),
+          React.createElement('p', { className: 'section-subtitle' }, 'Reach out for opportunities, collaborations, or questions.'),
+          React.createElement('div', { className: 'contact-grid' },
+            React.createElement('div', { className: 'contact-info' },
+              React.createElement('h3', null, 'Let\'s Connect'),
+              React.createElement('p', null, 'I\'m currently open to entry-level Software Engineer or Junior Developer roles. Feel free to reach out!'),
+              React.createElement('div', null,
+                React.createElement('a', { href: `mailto:${email}`, className: 'contact-item' },
+                  React.createElement('div', { className: 'icon' }, '✉'),
+                  React.createElement('div', { className: 'info' },
+                    React.createElement('span', { className: 'label' }, 'Email'),
+                    React.createElement('span', { className: 'value' }, email)
+                  )
+                ),
+                React.createElement('a', { href: linkedin, target: '_blank', rel: 'noopener noreferrer', className: 'contact-item' },
+                  React.createElement('div', { className: 'icon' },
+                    React.createElement('svg', { width: '18', height: '18', viewBox: '0 0 24 24', fill: 'currentColor' },
+                      React.createElement('path', { d: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' })
+                    )
+                  ),
+                  React.createElement('div', { className: 'info' },
+                    React.createElement('span', { className: 'label' }, 'LinkedIn'),
+                    React.createElement('span', { className: 'value' }, 'linkedin.com/in/nawaf-rubayan')
+                  )
+                ),
+                React.createElement('a', { href: github, target: '_blank', rel: 'noopener noreferrer', className: 'contact-item' },
+                  React.createElement('div', { className: 'icon' },
+                    React.createElement('svg', { width: '18', height: '18', viewBox: '0 0 24 24', fill: 'currentColor' },
+                      React.createElement('path', { d: 'M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z' })
+                    )
+                  ),
+                  React.createElement('div', { className: 'info' },
+                    React.createElement('span', { className: 'label' }, 'GitHub'),
+                    React.createElement('span', { className: 'value' }, github === '#' ? 'github.com/your-username' : github.replace('https://', ''))
+                  )
+                ),
+                React.createElement('div', { className: 'contact-item', style: { cursor: 'default' } },
+                  React.createElement('div', { className: 'icon' }, '📍'),
+                  React.createElement('div', { className: 'info' },
+                    React.createElement('span', { className: 'label' }, 'Location'),
+                    React.createElement('span', { className: 'value' }, location)
+                  )
+                ),
+                React.createElement('div', { className: 'contact-item', style: { cursor: 'default' } },
+                  React.createElement('div', { className: 'icon' }, '📱'),
+                  React.createElement('div', { className: 'info' },
+                    React.createElement('span', { className: 'label' }, 'Phone'),
+                    React.createElement('span', { className: 'value' }, phone)
+                  )
+                )
+              )
+            ),
+            React.createElement('div', null,
+              React.createElement('div', { style: { background: 'var(--card-bg, #fff)', borderRadius: '16px', padding: '28px 32px', border: '1px solid var(--border-color, #e2e8f0)' } },
+                React.createElement('h4', { style: { marginBottom: '12px', fontSize: '1rem', fontWeight: '600' } }, '📄 Download My CV'),
+                React.createElement('p', { style: { color: '#64748b', fontSize: '0.95rem', marginBottom: '16px' } }, 'Get the full PDF version of my CV for offline viewing.'),
+                React.createElement('div', { style: { display: 'flex', gap: '12px', flexWrap: 'wrap' } },
+                  React.createElement('a', { href: 'cv.pdf', target: '_blank', className: 'btn btn-primary' }, 'View PDF'),
+                  React.createElement('a', { href: 'cv.pdf', download: true, className: 'btn btn-outline' }, 'Download')
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function Footer() {
+      const year = new Date().getFullYear();
+      return React.createElement('footer', { className: 'footer' },
+        React.createElement('div', { className: 'container' }, `© ${year} Nawaf Rubayan Alhejaili. Built with React & Tailwind.`)
+      );
+    }
+
+    // ─── APP ──────────────────────────────────────────────────────────────────
+
+    function App() {
+      const { theme } = useTheme();
+
+      useEffect(() => {
+        const isDark = theme === 'dark';
+        document.documentElement.style.setProperty('--about-bg', isDark ? '#0f172a' : '#f8fafc');
+        document.documentElement.style.setProperty('--projects-bg', isDark ? '#0f172a' : '#f8fafc');
+        document.documentElement.style.setProperty('--education-bg', isDark ? '#0f172a' : '#f8fafc');
+        document.documentElement.style.setProperty('--card-bg', isDark ? '#1e293b' : '#ffffff');
+        document.documentElement.style.setProperty('--border-color', isDark ? '#334155' : '#e2e8f0');
+      }, [theme]);
+
+      return React.createElement(React.Fragment, null,
+        React.createElement(Navbar, null),
+        React.createElement(Hero, null),
+        React.createElement(About, null),
+        React.createElement(Experience, null),
+        React.createElement(Projects, null),
+        React.createElement(Skills, null),
+        React.createElement(Education, null),
+        React.createElement(Contact, null),
+        React.createElement(Footer, null)
+      );
+    }
+
+    // ─── MOUNT ──────────────────────────────────────────────────────────────
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+      React.createElement(ThemeProvider, null,
+        React.createElement(App, null)
+      )
+    );
+  </script>
+</body>
+</html>
