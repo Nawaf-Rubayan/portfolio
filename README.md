@@ -2,8 +2,8 @@
 
 > Professional personal portfolio website – used as a public CV when applying for jobs.
 
-🔗 **Live site:** `https://<your-username>.github.io/<repository-name>/`  
-*(Replace with your actual URL after deploying.)*
+🔗 **Live site:** `https://nawaf-rubayan.github.io/portfolio/`  
+
 
 ---
 
